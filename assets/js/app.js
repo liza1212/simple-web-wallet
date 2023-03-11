@@ -161,3 +161,13 @@ const togglePasscodeModal = () => {
 const toggleMnemonicRestoreModal = () => {
   $('#mdlMnemonicRestore').modal('toggle');
 };
+
+const signMessage=async () => {
+ const privateKey = getPrivatekey();
+ let wallet = await new ethers.Wallet(privateKey);
+ const message=$('#inputMsg').val()
+ const value= await wallet.signMessage(message)
+ $('#signedMessage').html(value)
+// console.log(value)
+//  console.log(message)
+}
